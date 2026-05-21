@@ -489,6 +489,38 @@ body {
   </div>
 </div>
 
+<script>
+/* ── Tab switching (runs independently of Chart.js) ── */
+(function () {
+  function initTabs() {
+    var navItems = document.querySelectorAll('.nav-item[data-tab]');
+    var cards    = document.querySelectorAll('.dash-grid [data-tabs]');
+    function showTab(tab) {
+      cards.forEach(function(card) {
+        var tabs = card.getAttribute('data-tabs').split(',');
+        var show = false;
+        for (var i = 0; i < tabs.length; i++) {
+          if (tabs[i].trim() === tab) { show = true; break; }
+        }
+        card.style.display = show ? '' : 'none';
+      });
+    }
+    navItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        navItems.forEach(function(n) { n.classList.remove('active'); });
+        item.classList.add('active');
+        showTab(item.getAttribute('data-tab'));
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTabs);
+  } else {
+    initTabs();
+  }
+})();
+</script>
+
 <!-- ══════════════════════════════════════════════
      MAIN GRID
 ══════════════════════════════════════════════ -->
@@ -1285,28 +1317,6 @@ document.querySelectorAll('.scenario-btn').forEach(btn => {
   });
 });
 
-/* ── Tab switching ── */
-(function () {
-  var navItems = document.querySelectorAll('.nav-item[data-tab]');
-  var cards    = document.querySelectorAll('.dash-grid [data-tabs]');
-  function showTab(tab) {
-    cards.forEach(function(card) {
-      var tabs = card.getAttribute('data-tabs').split(',');
-      var show = false;
-      for (var i = 0; i < tabs.length; i++) {
-        if (tabs[i].trim() === tab) { show = true; break; }
-      }
-      card.style.display = show ? '' : 'none';
-    });
-  }
-  navItems.forEach(function(item) {
-    item.addEventListener('click', function() {
-      navItems.forEach(function(n) { n.classList.remove('active'); });
-      item.classList.add('active');
-      showTab(item.getAttribute('data-tab'));
-    });
-  });
-})();
 </script>
 </body>
 </html>
