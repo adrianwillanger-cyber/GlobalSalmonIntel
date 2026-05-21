@@ -411,14 +411,14 @@ body {
     </div>
   </div>
   <div class="nav-bar">
-    <div class="nav-item active">Overview</div>
-    <div class="nav-item">Prices</div>
-    <div class="nav-item">Supply</div>
-    <div class="nav-item">Export markets</div>
-    <div class="nav-item">Environmental</div>
-    <div class="nav-item">Forecasts</div>
-    <div class="nav-item">Competitive</div>
-    <div class="nav-item">Resources</div>
+    <div class="nav-item active" data-tab="overview">Overview</div>
+    <div class="nav-item" data-tab="prices">Prices</div>
+    <div class="nav-item" data-tab="supply">Supply</div>
+    <div class="nav-item" data-tab="export markets">Export markets</div>
+    <div class="nav-item" data-tab="environmental">Environmental</div>
+    <div class="nav-item" data-tab="forecasts">Forecasts</div>
+    <div class="nav-item" data-tab="competitive">Competitive</div>
+    <div class="nav-item" data-tab="resources">Resources</div>
     <div class="nav-spacer"></div>
     <div class="conf-tag">🔒 Confidential v1.0</div>
   </div>
@@ -678,7 +678,7 @@ body {
   </div>
 
   <!-- ── Container 7: Trade Flow Map ── -->
-  <div class="card trade-card" data-tabs="supply,export markets">
+  <div class="card trade-card" data-tabs="supply,export markets" style="display:none">
     <div class="card-header">
       <span class="card-title">Trade flow map — Norway exports</span>
       <span style="font-size:9px;color:var(--teal-700)">Line thickness = volume · Color = growth</span>
@@ -752,7 +752,7 @@ body {
   </div>
 
   <!-- ── Container 8: Forward Curve ── -->
-  <div class="card forward-card" data-tabs="prices,forecasts">
+  <div class="card forward-card" data-tabs="prices,forecasts" style="display:none">
     <div class="card-header">
       <span class="card-title">Forward curve</span>
       <span class="contango-badge">CONTANGO</span>
@@ -803,7 +803,7 @@ body {
   </div>
 
   <!-- ── Container 9: Environmental / Sea Lice ── -->
-  <div class="card env-card" data-tabs="environmental">
+  <div class="card env-card" data-tabs="environmental" style="display:none">
     <div class="card-header">
       <span class="card-title">Environmental monitoring</span>
       <span class="card-badge" style="background:rgba(186,117,23,.15);color:var(--amber)">ELEVATED RISK</span>
@@ -844,7 +844,7 @@ body {
   </div>
 
   <!-- ── Container 10: Temperature Anomaly ── -->
-  <div class="card temp-card" data-tabs="environmental">
+  <div class="card temp-card" data-tabs="environmental" style="display:none">
     <div class="card-header">
       <span class="card-title">Temperature anomaly</span>
       <span class="watch-badge">WATCH</span>
@@ -864,7 +864,7 @@ body {
   </div>
 
   <!-- ── Container 11: Predictive Analytics ── -->
-  <div class="card predict-card" data-tabs="forecasts">
+  <div class="card predict-card" data-tabs="forecasts" style="display:none">
     <div class="card-header">
       <span class="card-title">3-month price forecast</span>
       <span class="card-badge" style="background:rgba(29,158,117,.15);color:var(--teal-300)">75% confidence</span>
@@ -900,7 +900,7 @@ body {
   </div>
 
   <!-- ── Container 12: Competitive Intel ── -->
-  <div class="card comp-card" data-tabs="competitive">
+  <div class="card comp-card" data-tabs="competitive" style="display:none">
     <div class="card-header">
       <span class="card-title">Competitive intelligence — Q1 2026</span>
       <span style="font-size:9px;color:var(--teal-700)">Oslo Børs listed</span>
@@ -998,7 +998,7 @@ body {
   </div>
 
   <!-- ── Container 14: Data Sources & Resources ── -->
-  <div class="card" data-tabs="resources" style="grid-column:1/-1">
+  <div class="card" data-tabs="resources" style="display:none;grid-column:1/-1">
     <div class="card-header">
       <span class="card-title">Data sources &amp; resources</span>
       <span style="font-size:9px;color:var(--teal-700)">All primary sources used across this dashboard</span>
@@ -1253,26 +1253,28 @@ document.querySelectorAll('.scenario-btn').forEach(btn => {
 
 /* ── Tab switching ── */
 (function () {
-  function filterCards(activeTab) {
-    const tab = activeTab.toLowerCase().trim();
-    document.querySelectorAll('.dash-grid [data-tabs]').forEach(card => {
-      const tabs = card.getAttribute('data-tabs').split(',').map(t => t.trim());
-      card.style.display = tabs.includes(tab) ? '' : 'none';
+  var navItems = document.querySelectorAll('.nav-item[data-tab]');
+  var cards    = document.querySelectorAll('.dash-grid [data-tabs]');
+
+  function showTab(tab) {
+    cards.forEach(function(card) {
+      var tabs = card.getAttribute('data-tabs').split(',');
+      var show = false;
+      for (var i = 0; i < tabs.length; i++) {
+        if (tabs[i].trim() === tab) { show = true; break; }
+      }
+      card.style.display = show ? '' : 'none';
+      if (show && card.style.gridColumn) card.style.gridColumn = '';
     });
   }
 
-  const navItems = document.querySelectorAll('.nav-item');
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
-      navItems.forEach(n => n.classList.remove('active'));
+  navItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      navItems.forEach(function(n) { n.classList.remove('active'); });
       item.classList.add('active');
-      filterCards(item.textContent.trim());
+      showTab(item.getAttribute('data-tab'));
     });
   });
-
-  // Activate Overview on load
-  const overview = Array.from(navItems).find(n => n.textContent.trim() === 'Overview');
-  if (overview) { overview.classList.add('active'); filterCards('Overview'); }
 })();
 </script>
 </body>
