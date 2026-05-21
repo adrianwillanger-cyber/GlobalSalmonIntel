@@ -79,6 +79,57 @@ body {
   font-family: var(--font-ui); cursor: pointer; display: flex; align-items: center; gap: 4px;
 }
 .hdr-btn:hover { background: var(--teal-800); }
+
+/* ── Dashboard For Sale CTA ── */
+.for-sale-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 14px 6px 10px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #BA7517 0%, #D4881E 60%, #E8A830 100%);
+  border: 1px solid #E8A830;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(186,117,23,.5), 0 0 28px rgba(186,117,23,.2);
+  animation: sale-glow 2.5s ease-in-out infinite;
+  transition: transform .15s, box-shadow .15s;
+}
+.for-sale-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 18px rgba(186,117,23,.8), 0 0 40px rgba(186,117,23,.35);
+}
+@keyframes sale-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(186,117,23,.45), 0 0 24px rgba(186,117,23,.18); }
+  50%       { box-shadow: 0 0 18px rgba(186,117,23,.85), 0 0 42px rgba(186,117,23,.35); }
+}
+.for-sale-btn::after {
+  content: '';
+  position: absolute; top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+  animation: shimmer 2.8s ease-in-out infinite;
+}
+@keyframes shimmer { 0%,100%{left:-60%} 50%{left:120%} }
+.for-sale-pulse {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #04342C; flex-shrink: 0;
+  animation: pulse-ring 1.6s ease-out infinite;
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(4,52,44,.7); }
+  70%  { box-shadow: 0 0 0 7px rgba(4,52,44,0); }
+  100% { box-shadow: 0 0 0 0 rgba(4,52,44,0); }
+}
+.for-sale-icon { font-size: 16px; }
+.for-sale-text { display: flex; flex-direction: column; gap: 1px; }
+.for-sale-label {
+  font-size: 12px; font-weight: 700; color: #04342C;
+  letter-spacing: 0.04em; line-height: 1; font-family: var(--font-ui);
+}
+.for-sale-sub {
+  font-size: 9px; color: rgba(4,52,44,.75);
+  letter-spacing: 0.03em; line-height: 1; font-family: var(--font-ui);
+}
 .badge {
   background: var(--amber-dk); color: #FAEEDA;
   font-size: 9px; padding: 1px 6px; border-radius: 99px;
@@ -334,7 +385,7 @@ body {
 
 /* ── CONTAINER 13: NEWS FEED ── */
 .news-card { grid-column: 1 / -1; }
-.news-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.news-items { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
 .news-item {
   padding: 10px 14px; border-right: var(--border);
   display: flex; flex-direction: column; gap: 4px;
@@ -344,6 +395,11 @@ body {
 .news-source { font-size: 9px; color: var(--teal-700); }
 .news-headline { font-size: 11px; color: var(--teal-100); line-height: 1.4; }
 .news-age { font-size: 9px; color: var(--teal-700); margin-top: auto; }
+.news-link {
+  color: var(--teal-100); text-decoration: none; font-size: 11px;
+  line-height: 1.4; display: block;
+}
+.news-link:hover { color: var(--teal-300); text-decoration: underline; }
 .news-tag {
   display: inline-block; font-size: 8px; padding: 1px 6px; border-radius: 99px; width: fit-content;
 }
@@ -376,7 +432,16 @@ body {
       <div class="hdr-actions">
         <button class="hdr-btn">🔔 Alerts <span class="badge">3</span></button>
         <button class="hdr-btn">⚙ Settings</button>
-        <button class="hdr-btn">👤 Adrian</button>
+        <a href="https://adrianwillanger-cyber.github.io/GlobalLSalmonLanding/"
+           target="_blank" rel="noopener"
+           class="for-sale-btn">
+          <span class="for-sale-pulse"></span>
+          <span class="for-sale-icon">🐟</span>
+          <span class="for-sale-text">
+            <span class="for-sale-label">Dashboard For Sale</span>
+            <span class="for-sale-sub">Custom builds available →</span>
+          </span>
+        </a>
       </div>
     </div>
   </div>
@@ -384,12 +449,12 @@ body {
     <div class="ticker-label">Live prices</div>
     <div class="ticker-items">
       <div class="ticker-item">
-        <div class="t-name">Norway FPI</div>
-        <div class="t-price"><span class="t-cur" style="color:var(--teal-300)">NOK</span>96.50</div>
-        <div class="t-chg up">▲ +1.8% 24h</div>
+        <div class="t-name">Norway — Atlantic Salmon</div>
+        <div class="t-price"><span class="t-cur" style="color:var(--teal-300)">NOK</span>82.58</div>
+        <div class="t-chg down">▼ −1.1% 24h</div>
       </div>
       <div class="ticker-item">
-        <div class="t-name">Chile index</div>
+        <div class="t-name">Chile — Atl. 72% · Coho 23%</div>
         <div class="t-price" style="color:var(--coral)"><span class="t-cur" style="color:var(--coral)">USD</span>6.20</div>
         <div class="t-chg down">▼ −0.5% 24h</div>
       </div>
@@ -434,10 +499,10 @@ body {
     <div class="card-header">
       <span class="card-title">30-day multi-origin price trends</span>
       <div style="display:flex;gap:12px;align-items:center">
-        <span style="font-size:9px;color:var(--teal-300)">▲ Norway</span>
-        <span style="font-size:9px;color:var(--coral)">▼ Chile</span>
-        <span style="font-size:9px;color:var(--purple)">— Scotland</span>
-        <span style="font-size:9px;color:var(--amber)">▲ Canada</span>
+        <span style="font-size:9px;color:var(--teal-300)">▲ Norway · Atlantic Salmon (Salmo salar)</span>
+        <span style="font-size:9px;color:var(--coral)">▼ Chile · Atl. 72% / Coho 23% (O. kisutch)</span>
+        <span style="font-size:9px;color:var(--purple)">— Scotland · Atlantic Salmon</span>
+        <span style="font-size:9px;color:var(--amber)">▲ Canada · Atlantic Salmon</span>
         <span class="card-badge" style="background:rgba(29,158,117,.15);color:var(--teal-300)">
           <span class="live-dot"></span>Live
         </span>
@@ -458,7 +523,7 @@ body {
     </div>
     <div class="card-body">
       <div class="big-stat">
-        <div class="big-label">Norway biomass</div>
+        <div class="big-label">Norway biomass · <em style="color:var(--teal-500);font-style:normal">Salmo salar</em></div>
         <div><span class="big-num">1,520</span><span class="big-unit">K tonnes</span></div>
         <span class="change-pill pill-up">▲ +7.0% YoY</span>
       </div>
@@ -485,13 +550,13 @@ body {
       </div>
       <hr class="divider">
       <div style="background:rgba(186,117,23,.10);border:0.5px solid var(--amber);border-radius:6px;padding:8px 10px;margin-top:4px">
-        <div style="font-size:9px;color:var(--amber);letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:4px">⚠ Wild Pacific Supply Alert</div>
+        <div style="font-size:9px;color:var(--amber);letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:4px">&#9888; Wild Pacific Supply Alert</div>
         <div style="font-size:9px;color:var(--teal-100);line-height:1.5">
-          Alaska 2026 forecast: <strong style="color:var(--amber)">121.4M fish</strong> — down <strong style="color:var(--coral)">38%</strong> vs 197.4M in 2025.<br>
+          Alaska 2026 forecast: <strong style="color:var(--amber)">121.4M fish</strong> &mdash; down <strong style="color:var(--coral)">38%</strong> vs 197.4M in 2025.<br>
           Pink salmon collapses to <strong style="color:var(--coral)">8.1M</strong> (even-year cycle; was 64.1M). Bristol Bay sockeye: <strong>62.9M</strong>.<br>
           Wild supply tightening amplifies farmed Atlantic demand in H2 2026.
         </div>
-        <div style="font-size:8px;color:var(--teal-700);margin-top:5px">Source: ADF&amp;G Special Publication No. 26-08 · April 2026</div>
+        <div style="font-size:8px;color:var(--teal-700);margin-top:5px">Source: ADF&amp;G Special Publication No. 26-08 &middot; April 2026</div>
       </div>
     </div>
   </div>
@@ -521,7 +586,7 @@ body {
         <div style="font-size:9px;color:var(--teal-700);margin-bottom:4px;letter-spacing:.06em;text-transform:uppercase">Contributing factors</div>
         <div class="factor-item">
           <div class="factor-dot" style="background:var(--teal-500)"></div>
-          Norway price momentum +1.8%
+          Norway price momentum −1.1%
         </div>
         <div class="factor-item">
           <div class="factor-dot" style="background:var(--teal-500)"></div>
@@ -760,39 +825,39 @@ body {
     <div class="card-body">
       <div class="spot-row">
         <span class="spot-label">Spot (Norway)</span>
-        <span class="spot-price">NOK 96.50</span>
+        <span class="spot-price">NOK 82.58</span>
       </div>
       <div class="curve-items">
         <div class="curve-item">
           <span class="c-tenor">1M</span>
           <div class="c-bar-wrap"><div class="c-bar"><div class="c-bar-fill" style="width:94%"></div></div></div>
           <div style="text-align:right">
-            <div class="c-price">97.20</div>
-            <div class="c-spread up">+0.70</div>
+            <div class="c-price">83.25</div>
+            <div class="c-spread up">+0.67</div>
           </div>
         </div>
         <div class="curve-item">
           <span class="c-tenor">3M</span>
           <div class="c-bar-wrap"><div class="c-bar"><div class="c-bar-fill" style="width:95%"></div></div></div>
           <div style="text-align:right">
-            <div class="c-price">98.20</div>
-            <div class="c-spread up">+1.70</div>
+            <div class="c-price">84.20</div>
+            <div class="c-spread up">+1.62</div>
           </div>
         </div>
         <div class="curve-item">
           <span class="c-tenor">6M</span>
           <div class="c-bar-wrap"><div class="c-bar"><div class="c-bar-fill" style="width:98%"></div></div></div>
           <div style="text-align:right">
-            <div class="c-price">101.50</div>
-            <div class="c-spread up">+5.00</div>
+            <div class="c-price">86.90</div>
+            <div class="c-spread up">+4.32</div>
           </div>
         </div>
         <div class="curve-item">
           <span class="c-tenor">12M</span>
           <div class="c-bar-wrap"><div class="c-bar"><div class="c-bar-fill" style="width:100%;background:var(--teal-300)"></div></div></div>
           <div style="text-align:right">
-            <div class="c-price" style="color:var(--teal-100)">103.80</div>
-            <div class="c-spread up">+7.30</div>
+            <div class="c-price" style="color:var(--teal-100)">89.50</div>
+            <div class="c-spread up">+6.92</div>
           </div>
         </div>
       </div>
@@ -873,7 +938,7 @@ body {
       <div class="forecast-band">
         <div>
           <div style="font-size:9px;color:var(--teal-700)">Expected range</div>
-          <div class="f-range">NOK 98–102</div>
+          <div class="f-range">NOK 83–87</div>
         </div>
         <div style="text-align:right">
           <div style="font-size:9px;color:var(--teal-700)">Historical accuracy</div>
@@ -956,142 +1021,111 @@ body {
   <div class="card news-card" data-tabs="overview,supply">
     <div class="card-header">
       <span class="card-title">Latest intelligence</span>
-      <span style="font-size:9px;color:var(--teal-700)">Reverse chronological · 5 items · Click headline to open source 🔗 All articles linked</span>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:9px;color:var(--teal-700)">Reverse chronological · 5 items · Click headline to open source</span>
+        <span style="font-size:9px;background:rgba(93,202,165,.1);color:var(--teal-300);padding:2px 8px;border-radius:99px;">🔗 All articles linked</span>
+      </div>
     </div>
     <div class="news-items">
-      <div class="news-item">
-        <div class="news-icon">🐟</div>
-        <div class="news-source">ADF&amp;G · Wild Pacific</div>
-        <div class="news-headline"><a href="http://www.adfg.alaska.gov/sf/publications/" target="_blank" style="color:inherit;text-decoration:none">Alaska 2026 salmon forecast: 121.4M fish, down 38% — pink collapses to 8.1M</a></div>
-        <span class="news-tag tag-warning">Supply Risk</span>
-        <div class="news-age">Apr 2026 · ADF&amp;G Pub. 26-08</div>
+      <div class="news-item" style="background:rgba(186,117,23,.06)">
+        <div class="news-icon">&#128031;</div>
+        <div class="news-source">ADF&amp;G &middot; <em style="color:var(--amber);font-style:normal">Wild Pacific Salmon</em></div>
+        <a href="http://www.adfg.alaska.gov/sf/publications/" target="_blank" rel="noopener"
+           class="news-headline news-link">Alaska 2026 forecast: 121.4M fish, &minus;38% &mdash; pink collapses to 8.1M (even-year cycle)</a>
+        <span class="news-tag" style="background:rgba(186,117,23,.15);color:var(--amber)">Supply Risk</span>
+        <div class="news-age">Apr 2026 &middot; ADF&amp;G Pub. 26-08 &#8599;</div>
       </div>
       <div class="news-item">
         <div class="news-icon">📰</div>
-        <div class="news-source">IntraFish</div>
-        <div class="news-headline">Norwegian exports to China surge 25% in May</div>
+        <div class="news-source">IntraFish · <em style="color:var(--teal-700);font-style:normal">Atlantic Salmon (Salmo salar)</em></div>
+        <a href="https://www.intrafish.com/salmon/norwegian-exports-to-china-surge-in-may/2-1-1643721"
+           target="_blank" rel="noopener"
+           class="news-headline news-link">Norwegian exports to China surge 25% in May</a>
         <span class="news-tag tag-positive">Positive</span>
-        <div class="news-age">2h ago</div>
+        <div class="news-age">2h ago · IntraFish ↗</div>
       </div>
       <div class="news-item">
         <div class="news-icon">📊</div>
-        <div class="news-source">Kontali Analyse</div>
-        <div class="news-headline">Kontali raises 2026 Norwegian forecast to 1.48M tonnes</div>
+        <div class="news-source">Kontali Analyse · <em style="color:var(--teal-700);font-style:normal">All origins</em></div>
+        <a href="https://www.kontali.no/en/news"
+           target="_blank" rel="noopener"
+           class="news-headline news-link">Kontali raises 2026 Norwegian forecast to 1.48M tonnes</a>
         <span class="news-tag tag-positive">Positive</span>
-        <div class="news-age">5h ago</div>
+        <div class="news-age">5h ago · Kontali.no ↗</div>
       </div>
       <div class="news-item">
         <div class="news-icon">⚠️</div>
-        <div class="news-source">BarentsWatch</div>
-        <div class="news-headline">Mid-Norway lice levels reach seasonal peak</div>
+        <div class="news-source">BarentsWatch · <em style="color:var(--teal-700);font-style:normal">Atlantic Salmon (Salmo salar)</em></div>
+        <a href="https://www.barentswatch.no/en/fishhealth/"
+           target="_blank" rel="noopener"
+           class="news-headline news-link">Mid-Norway lice levels reach seasonal peak</a>
         <span class="news-tag tag-warning">Warning</span>
-        <div class="news-age">8h ago</div>
+        <div class="news-age">8h ago · BarentsWatch ↗</div>
       </div>
       <div class="news-item">
         <div class="news-icon">📋</div>
-        <div class="news-source">Mowi ASA</div>
-        <div class="news-headline">Mowi Q2 guidance: 110K tonnes harvest expected</div>
+        <div class="news-source">Mowi ASA IR · <em style="color:var(--teal-700);font-style:normal">Atlantic Salmon (Salmo salar)</em></div>
+        <a href="https://mowi.com/investors/reports-and-presentations/"
+           target="_blank" rel="noopener"
+           class="news-headline news-link">Mowi Q2 guidance: 110K tonnes Atlantic salmon harvest expected</a>
         <span class="news-tag tag-neutral">Neutral</span>
-        <div class="news-age">1d ago</div>
+        <div class="news-age">1d ago · Mowi.com ↗</div>
       </div>
+    </div>
+    <!-- Species key -->
+    <div style="padding:8px 14px;border-top:var(--border);display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <span style="font-size:9px;color:var(--teal-700);letter-spacing:.06em;text-transform:uppercase">Species key:</span>
+      <span style="font-size:9px;color:var(--teal-300)">🟢 Norway · Atlantic Salmon <em>(Salmo salar)</em> — 100% of harvest</span>
+      <span style="font-size:9px;color:var(--coral)">🔴 Chile · Atlantic Salmon 72% + Coho <em>(Oncorhynchus kisutch)</em> 23% + Trout 5%</span>
+      <span style="font-size:9px;color:var(--purple)">🟣 Scotland · Atlantic Salmon <em>(Salmo salar)</em></span>
+      <span style="font-size:9px;color:var(--amber)">🟡 Canada · Atlantic Salmon <em>(Salmo salar)</em></span>
     </div>
   </div>
 
-  <!-- ── Container 14: Data Sources & Resources ── -->
+  <!-- Container 14: Resources -->
   <div class="card" data-tabs="resources" style="display:none;grid-column:1/-1">
     <div class="card-header">
       <span class="card-title">Data sources &amp; resources</span>
-      <span style="font-size:9px;color:var(--teal-700)">All primary sources used across this dashboard</span>
+      <span style="font-size:9px;color:var(--teal-700)">All primary sources powering this dashboard</span>
     </div>
     <div class="card-body" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;padding:14px 16px">
-
-      <!-- Pricing & Forwards -->
       <div>
-        <div style="font-size:9px;color:var(--teal-500);letter-spacing:.10em;text-transform:uppercase;font-weight:600;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid var(--teal-800)">📈 Pricing &amp; Forwards</div>
+        <div style="font-size:9px;color:var(--teal-500);letter-spacing:.10em;text-transform:uppercase;font-weight:600;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid var(--teal-800)">&#128200; Pricing &amp; Forwards</div>
         <div style="display:flex;flex-direction:column;gap:7px">
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">Nasdaq Salmon Index (NOS)</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Norway FPI — daily benchmark price in NOK/kg</div>
-          </div>
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">Fish Pool ASA</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Forward curve: 1M, 3M, 6M, 12M contracts · <a href="https://fishpool.eu" target="_blank" style="color:var(--teal-500);text-decoration:none">fishpool.eu</a></div>
-          </div>
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">Urner Barry</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Global avg USD/lb · US market spot pricing</div>
-          </div>
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">Kontali Analyse</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Chile Index, Scotland Avg, production forecasts · <a href="https://www.kontali.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">kontali.no</a></div>
-          </div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">Nasdaq Salmon Index (NOS)</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Norway FPI &mdash; daily benchmark price in NOK/kg</div></div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">Fish Pool ASA</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Forward curve: 1M, 3M, 6M, 12M contracts &middot; <a href="https://fishpool.eu" target="_blank" style="color:var(--teal-500);text-decoration:none">fishpool.eu</a></div></div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">Urner Barry</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Global avg USD/lb &middot; US market spot pricing</div></div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">Kontali Analyse</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Chile Index, Scotland Avg, production forecasts &middot; <a href="https://www.kontali.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">kontali.no</a></div></div>
         </div>
       </div>
-
-      <!-- Supply & Trade -->
       <div>
-        <div style="font-size:9px;color:var(--teal-500);letter-spacing:.10em;text-transform:uppercase;font-weight:600;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid var(--teal-800)">🚢 Supply &amp; Trade</div>
+        <div style="font-size:9px;color:var(--teal-500);letter-spacing:.10em;text-transform:uppercase;font-weight:600;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid var(--teal-800)">&#128682; Supply &amp; Trade</div>
         <div style="display:flex;flex-direction:column;gap:7px">
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">Norwegian Seafood Council</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Weekly export volumes across 47 destination markets · <a href="https://seafood.no" target="_blank" style="color:var(--teal-500);text-decoration:none">seafood.no</a></div>
-          </div>
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">SSB — Statistics Norway</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Official Norwegian export statistics by country · <a href="https://www.ssb.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">ssb.no</a></div>
-          </div>
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">UN Comtrade / Eurostat</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Bilateral trade flows — 40+ country pairs</div>
-          </div>
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">Mowi / SalMar / Lerøy IR</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Quarterly harvest guidance and actuals vs. targets</div>
-          </div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">Norwegian Seafood Council</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Weekly export volumes across 47 destination markets &middot; <a href="https://seafood.no" target="_blank" style="color:var(--teal-500);text-decoration:none">seafood.no</a></div></div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">SSB &mdash; Statistics Norway</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Official Norwegian export statistics by country &middot; <a href="https://www.ssb.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">ssb.no</a></div></div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">UN Comtrade / Eurostat</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Bilateral trade flows &mdash; 40+ country pairs</div></div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">Mowi / SalMar / Ler&#248;y IR</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Quarterly harvest guidance and actuals vs. targets</div></div>
         </div>
       </div>
-
-      <!-- Biological Risk -->
       <div>
-        <div style="font-size:9px;color:var(--teal-500);letter-spacing:.10em;text-transform:uppercase;font-weight:600;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid var(--teal-800)">🧬 Biological Risk</div>
+        <div style="font-size:9px;color:var(--teal-500);letter-spacing:.10em;text-transform:uppercase;font-weight:600;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid var(--teal-800)">&#129516; Biological Risk</div>
         <div style="display:flex;flex-direction:column;gap:7px">
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">Mattilsynet</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Sea lice zone classification map, disease alerts · <a href="https://www.mattilsynet.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">mattilsynet.no</a></div>
-          </div>
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">BarentsWatch</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Real-time lice pressure, temperature anomaly by fjord · <a href="https://www.barentswatch.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">barentswatch.no</a></div>
-          </div>
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">Norwegian Veterinary Institute</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">ILA, PD, and AGD outbreak tracking · <a href="https://www.vetinst.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">vetinst.no</a></div>
-          </div>
-          <div>
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">IMR — Institute of Marine Research</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:1px">Ocean temperature and environmental research · <a href="https://www.hi.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">hi.no</a></div>
-          </div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">Mattilsynet</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Sea lice zone map, disease alerts &middot; <a href="https://www.mattilsynet.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">mattilsynet.no</a></div></div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">BarentsWatch</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Real-time lice pressure, temperature anomaly by fjord &middot; <a href="https://www.barentswatch.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">barentswatch.no</a></div></div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">Norwegian Veterinary Institute</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">ILA, PD, AGD outbreak tracking &middot; <a href="https://www.vetinst.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">vetinst.no</a></div></div>
+          <div><div style="font-size:9px;color:var(--teal-100);font-weight:600">IMR &mdash; Institute of Marine Research</div><div style="font-size:8px;color:var(--teal-700);margin-top:1px">Ocean temperature and environmental research &middot; <a href="https://www.hi.no/en" target="_blank" style="color:var(--teal-500);text-decoration:none">hi.no</a></div></div>
         </div>
       </div>
-
-      <!-- Wild Pacific Supply -->
       <div>
-        <div style="font-size:9px;color:var(--amber);letter-spacing:.10em;text-transform:uppercase;font-weight:600;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid var(--amber-dk)">🐟 Wild Pacific Supply</div>
-        <div style="display:flex;flex-direction:column;gap:7px">
-          <div style="background:rgba(186,117,23,.08);border:0.5px solid var(--amber-dk);border-radius:5px;padding:8px">
-            <div style="font-size:9px;color:var(--teal-100);font-weight:600">ADF&amp;G — Alaska Dept. of Fish &amp; Game</div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:2px;line-height:1.5">
-              Annual salmon harvest forecast — all species.<br>
-              2026 projection: 121.4M fish (−38% YoY).<br>
-              Bristol Bay sockeye: 62.9M · Pink: 8.1M (even-yr cycle).
-            </div>
-            <div style="font-size:8px;color:var(--amber);margin-top:4px">Special Publication No. 26-08 · April 2026</div>
-            <div style="margin-top:4px"><a href="http://www.adfg.alaska.gov/sf/publications/" target="_blank" style="font-size:8px;color:var(--teal-500);text-decoration:none">adfg.alaska.gov/sf/publications/ ↗</a></div>
-            <div style="font-size:8px;color:var(--teal-700);margin-top:2px;font-style:italic">Gleason, C.M. &amp; Munro, A.R. (eds.), 2026</div>
-          </div>
+        <div style="font-size:9px;color:var(--amber);letter-spacing:.10em;text-transform:uppercase;font-weight:600;margin-bottom:8px;padding-bottom:4px;border-bottom:0.5px solid var(--amber-dk)">&#128031; Wild Pacific Supply</div>
+        <div style="background:rgba(186,117,23,.08);border:0.5px solid var(--amber-dk);border-radius:5px;padding:8px">
+          <div style="font-size:9px;color:var(--teal-100);font-weight:600">ADF&amp;G &mdash; Alaska Dept. of Fish &amp; Game</div>
+          <div style="font-size:8px;color:var(--teal-700);margin-top:2px;line-height:1.5">Annual salmon harvest forecast &mdash; all species.<br>2026 projection: 121.4M fish (&minus;38% YoY).<br>Bristol Bay sockeye: 62.9M &middot; Pink: 8.1M (even-yr cycle).</div>
+          <div style="font-size:8px;color:var(--amber);margin-top:4px">Special Publication No. 26-08 &middot; April 2026</div>
+          <div style="margin-top:4px"><a href="http://www.adfg.alaska.gov/sf/publications/" target="_blank" style="font-size:8px;color:var(--teal-500);text-decoration:none">adfg.alaska.gov/sf/publications/ &#8599;</a></div>
+          <div style="font-size:8px;color:var(--teal-700);margin-top:2px;font-style:italic">Gleason, C.M. &amp; Munro, A.R. (eds.), 2026</div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -1120,7 +1154,7 @@ new Chart(priceCtx, {
     datasets: [
       {
         label: 'Norway (NOK)',
-        data: [80.20, 83.50, 88.00, 92.40, 96.50],
+        data: [68.40, 71.20, 75.60, 79.80, 82.58],
         borderColor: teal300, backgroundColor: 'rgba(93,202,165,.08)',
         borderWidth: 2, pointRadius: 3, pointBackgroundColor: teal300,
         tension: 0.4, fill: true
@@ -1208,20 +1242,20 @@ new Chart(fanCtx, {
     datasets: [
       {
         label: 'High',
-        data: [98.00, 100.00, 102.00, 104.00],
+        data: [84.00, 86.00, 88.00, 90.00],
         borderColor: 'rgba(93,202,165,.4)', backgroundColor: 'rgba(93,202,165,.08)',
         borderWidth: 1, borderDash: [3,2], pointRadius: 0, fill: '+1', tension: 0.4
       },
       {
         label: 'Mid',
-        data: [96.50, 97.50, 99.00, 100.00],
+        data: [82.58, 83.50, 85.00, 86.20],
         borderColor: teal300, backgroundColor: 'rgba(93,202,165,.06)',
         borderWidth: 2, pointRadius: 3, pointBackgroundColor: teal300,
         fill: false, tension: 0.4
       },
       {
         label: 'Low',
-        data: [95.00, 95.50, 96.00, 96.50],
+        data: [81.00, 81.50, 82.00, 82.50],
         borderColor: 'rgba(93,202,165,.4)', backgroundColor: 'transparent',
         borderWidth: 1, borderDash: [3,2], pointRadius: 0, tension: 0.4
       }
@@ -1255,7 +1289,6 @@ document.querySelectorAll('.scenario-btn').forEach(btn => {
 (function () {
   var navItems = document.querySelectorAll('.nav-item[data-tab]');
   var cards    = document.querySelectorAll('.dash-grid [data-tabs]');
-
   function showTab(tab) {
     cards.forEach(function(card) {
       var tabs = card.getAttribute('data-tabs').split(',');
@@ -1264,10 +1297,8 @@ document.querySelectorAll('.scenario-btn').forEach(btn => {
         if (tabs[i].trim() === tab) { show = true; break; }
       }
       card.style.display = show ? '' : 'none';
-      if (show && card.style.gridColumn) card.style.gridColumn = '';
     });
   }
-
   navItems.forEach(function(item) {
     item.addEventListener('click', function() {
       navItems.forEach(function(n) { n.classList.remove('active'); });
