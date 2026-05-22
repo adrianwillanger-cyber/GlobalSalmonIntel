@@ -11,30 +11,30 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --teal-900: #04342C;
-  --teal-800: #085041;
-  --teal-700: #0F6E56;
-  --teal-500: #1D9E75;
-  --teal-300: #5DCAA5;
-  --teal-100: #9FE1CB;
-  --teal-50:  #E1F5EE;
+  --teal-900: #0d1b2e;
+  --teal-800: #142a47;
+  --teal-700: #1e4070;
+  --teal-500: #2a6ead;
+  --teal-300: #5ba4d4;
+  --teal-100: #a8cfe8;
+  --teal-50:  #e3f0f8;
   --coral:    #F0997B;
   --coral-dk: #D85A30;
   --purple:   #AFA9EC;
   --amber:    #FAC775;
   --amber-dk: #BA7517;
   --red:      #E24B4A;
-  --blue:     #378ADD;
-  --green:    #5DCAA5;
+  --blue:     #5ba4d4;
+  --green:    #4ecb8d;
   --gray:     #888780;
   --gray-lt:  #D3D1C7;
   --font-ui:  'Syne', sans-serif;
   --font-mono:'IBM Plex Mono', monospace;
-  --border:   0.5px solid #0F6E56;
+  --border:   0.5px solid #1e4070;
 }
 
 body {
-  background: #021f18;
+  background: #060d1a;
   font-family: var(--font-ui);
   color: var(--teal-50);
   min-height: 100vh;
@@ -112,7 +112,7 @@ body {
 @keyframes shimmer { 0%,100%{left:-60%} 50%{left:120%} }
 .for-sale-pulse {
   width: 8px; height: 8px; border-radius: 50%;
-  background: #04342C; flex-shrink: 0;
+  background: #0d1b2e; flex-shrink: 0;
   animation: pulse-ring 1.6s ease-out infinite;
 }
 @keyframes pulse-ring {
@@ -123,7 +123,7 @@ body {
 .for-sale-icon { font-size: 16px; }
 .for-sale-text { display: flex; flex-direction: column; gap: 1px; }
 .for-sale-label {
-  font-size: 12px; font-weight: 700; color: #04342C;
+  font-size: 12px; font-weight: 700; color: #0d1b2e;
   letter-spacing: 0.04em; line-height: 1; font-family: var(--font-ui);
 }
 .for-sale-sub {
@@ -213,7 +213,7 @@ body {
   font-family: var(--font-mono); font-size: 10px; padding: 2px 7px;
   border-radius: 99px; margin-top: 3px;
 }
-.pill-up { background: rgba(29,158,117,.15); color: var(--teal-300); }
+.pill-up { background: rgba(42,110,173,.20); color: var(--teal-300); }
 .pill-dn { background: rgba(240,153,123,.15); color: var(--coral); }
 .divider { border: none; border-top: var(--border); margin: 10px 0; }
 .tightness-row { display: flex; align-items: center; justify-content: space-between; }
@@ -232,7 +232,7 @@ body {
   height: 6px; background: var(--teal-800);
   border-radius: 99px; overflow: hidden; margin: 4px 0;
 }
-.gauge-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, #D85A30, #FAC775, #1D9E75); }
+.gauge-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, #D85A30, #FAC775, #2a6ead); }
 .gauge-labels { display: flex; justify-content: space-between; font-size: 9px; color: var(--teal-700); }
 .score-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .score-num { font-family: var(--font-mono); font-size: 28px; color: var(--teal-100); }
@@ -300,7 +300,7 @@ body {
 }
 .contango-badge {
   font-size: 10px; color: var(--teal-300);
-  background: rgba(29,158,117,.15); padding: 3px 10px; border-radius: 99px;
+  background: rgba(42,110,173,.20); padding: 3px 10px; border-radius: 99px;
 }
 .curve-items { display: flex; flex-direction: column; gap: 6px; }
 .curve-item { display: flex; align-items: center; justify-content: space-between; }
@@ -333,7 +333,7 @@ body {
 .zm { background: rgba(186,117,23,.1); }
 .zm .zone-num { color: var(--amber); }
 .zm .zone-label { color: var(--amber-dk); }
-.zl { background: rgba(29,158,117,.1); }
+.zl { background: rgba(42,110,173,.12); }
 .zl .zone-num { color: var(--teal-300); }
 .zl .zone-label { color: var(--teal-700); }
 
@@ -381,7 +381,7 @@ body {
 .ma-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-500); margin-top: 3px; flex-shrink: 0; }
 .ma-text { font-size: 10px; color: var(--teal-100); }
 .ma-date { font-size: 9px; color: var(--teal-700); }
-.ma-status { font-size: 8px; color: var(--teal-300); background: rgba(29,158,117,.1); padding: 1px 6px; border-radius: 99px; margin-left: 4px; }
+.ma-status { font-size: 8px; color: var(--teal-300); background: rgba(42,110,173,.12); padding: 1px 6px; border-radius: 99px; margin-left: 4px; }
 
 /* ── CONTAINER 13: NEWS FEED ── */
 .news-card { grid-column: 1 / -1; }
@@ -403,7 +403,7 @@ body {
 .news-tag {
   display: inline-block; font-size: 8px; padding: 1px 6px; border-radius: 99px; width: fit-content;
 }
-.tag-positive { background: rgba(29,158,117,.15); color: var(--teal-300); }
+.tag-positive { background: rgba(42,110,173,.20); color: var(--teal-300); }
 .tag-warning  { background: rgba(186,117,23,.15);  color: var(--amber); }
 .tag-neutral  { background: rgba(136,135,128,.15); color: var(--gray-lt); }
 
@@ -535,7 +535,7 @@ body {
         <span style="font-size:9px;color:var(--coral)">▼ Chile · Atl. 72% / Coho 23% (O. kisutch)</span>
         <span style="font-size:9px;color:var(--purple)">— Scotland · Atlantic Salmon</span>
         <span style="font-size:9px;color:var(--amber)">▲ Canada · Atlantic Salmon</span>
-        <span class="card-badge" style="background:rgba(29,158,117,.15);color:var(--teal-300)">
+        <span class="card-badge" style="background:rgba(42,110,173,.20);color:var(--teal-300)">
           <span class="live-dot"></span>Live
         </span>
       </div>
@@ -551,7 +551,7 @@ body {
   <div class="card supply-card" data-tabs="overview,supply">
     <div class="card-header">
       <span class="card-title">Supply status</span>
-      <span class="card-badge" style="background:rgba(29,158,117,.15);color:var(--teal-300)">Tight</span>
+      <span class="card-badge" style="background:rgba(42,110,173,.20);color:var(--teal-300)">Tight</span>
     </div>
     <div class="card-body">
       <div class="big-stat">
@@ -597,7 +597,7 @@ body {
   <div class="card sentiment-card" data-tabs="overview">
     <div class="card-header">
       <span class="card-title">Market sentiment</span>
-      <span class="card-badge" style="background:rgba(29,158,117,.15);color:var(--teal-300)">Bullish · Improving</span>
+      <span class="card-badge" style="background:rgba(42,110,173,.20);color:var(--teal-300)">Bullish · Improving</span>
     </div>
     <div class="card-body">
       <div class="score-row">
@@ -783,17 +783,17 @@ body {
     <div class="card-body">
       <svg viewBox="0 0 460 200" class="map-svg-wrap" style="height:180px">
         <!-- simplified world landmass outlines -->
-        <rect width="460" height="200" fill="#085041" rx="6"/>
+        <rect width="460" height="200" fill="#142a47" rx="6"/>
         <!-- Europe -->
-        <ellipse cx="220" cy="72" rx="38" ry="28" fill="#0F6E56" opacity=".7"/>
+        <ellipse cx="220" cy="72" rx="38" ry="28" fill="#1e4070" opacity=".7"/>
         <!-- North America -->
-        <ellipse cx="100" cy="80" rx="55" ry="40" fill="#0F6E56" opacity=".7"/>
+        <ellipse cx="100" cy="80" rx="55" ry="40" fill="#1e4070" opacity=".7"/>
         <!-- Asia -->
-        <ellipse cx="340" cy="75" rx="60" ry="35" fill="#0F6E56" opacity=".7"/>
+        <ellipse cx="340" cy="75" rx="60" ry="35" fill="#1e4070" opacity=".7"/>
         <!-- Africa -->
-        <ellipse cx="218" cy="140" rx="30" ry="35" fill="#0F6E56" opacity=".5"/>
+        <ellipse cx="218" cy="140" rx="30" ry="35" fill="#1e4070" opacity=".5"/>
         <!-- South America -->
-        <ellipse cx="118" cy="150" rx="25" ry="35" fill="#0F6E56" opacity=".5"/>
+        <ellipse cx="118" cy="150" rx="25" ry="35" fill="#1e4070" opacity=".5"/>
 
         <!-- Norway origin -->
         <circle cx="218" cy="52" r="6" fill="var(--teal-300)" opacity=".9"/>
@@ -964,7 +964,7 @@ body {
   <div class="card predict-card" data-tabs="forecasts" style="display:none">
     <div class="card-header">
       <span class="card-title">3-month price forecast</span>
-      <span class="card-badge" style="background:rgba(29,158,117,.15);color:var(--teal-300)">75% confidence</span>
+      <span class="card-badge" style="background:rgba(42,110,173,.20);color:var(--teal-300)">75% confidence</span>
     </div>
     <div class="card-body">
       <div class="forecast-band">
@@ -997,7 +997,7 @@ body {
   </div>
 
   <!-- ── Container 12: Competitive Intel ── -->
-  <div class="card comp-card" data-tabs="competitive" style="display:none">
+  <div class="card comp-card" data-tabs="competitive,forecasts" style="display:none">
     <div class="card-header">
       <span class="card-title">Competitive intelligence — Q1 2026</span>
       <span style="font-size:9px;color:var(--teal-700)">Oslo Børs listed</span>
@@ -1165,9 +1165,9 @@ body {
 
 <script>
 const teal300 = '#5DCAA5';
-const teal500 = '#1D9E75';
-const teal700 = '#0F6E56';
-const teal800 = '#085041';
+const teal500 = '#2a6ead';
+const teal700 = '#1e4070';
+const teal800 = '#142a47';
 const teal50  = '#E1F5EE';
 const coral   = '#F0997B';
 const purple  = '#AFA9EC';
@@ -1219,15 +1219,15 @@ new Chart(priceCtx, {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: '#04342C', borderColor: teal700, borderWidth: 0.5,
+        backgroundColor: '#0d1b2e', borderColor: teal700, borderWidth: 0.5,
         titleColor: teal300, bodyColor: teal50,
         callbacks: { label: ctx => ' NOK ' + ctx.parsed.y.toFixed(2) }
       }
     },
     scales: {
-      x: { grid: { color: 'rgba(15,110,86,.3)' }, ticks: { color: teal700 } },
+      x: { grid: { color: 'rgba(30,64,112,.3)' }, ticks: { color: teal700 } },
       y: {
-        grid: { color: 'rgba(15,110,86,.3)' }, ticks: { color: teal700 },
+        grid: { color: 'rgba(30,64,112,.3)' }, ticks: { color: teal700 },
         min: 74, max: 100
       }
     }
@@ -1253,14 +1253,14 @@ new Chart(tempCtx, {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: '#04342C', borderColor: teal700, borderWidth: 0.5,
+        backgroundColor: '#0d1b2e', borderColor: teal700, borderWidth: 0.5,
         titleColor: teal300, bodyColor: teal50,
         callbacks: { label: ctx => '+' + ctx.parsed.y.toFixed(1) + '°C' }
       }
     },
     scales: {
-      x: { grid: { color: 'rgba(15,110,86,.3)' }, ticks: { color: teal700, font: { size: 8 } } },
-      y: { grid: { color: 'rgba(15,110,86,.3)' }, ticks: { color: teal700, font: { size: 8 } }, min: 0, max: 1 }
+      x: { grid: { color: 'rgba(30,64,112,.3)' }, ticks: { color: teal700, font: { size: 8 } } },
+      y: { grid: { color: 'rgba(30,64,112,.3)' }, ticks: { color: teal700, font: { size: 8 } }, min: 0, max: 1 }
     }
   }
 });
@@ -1298,13 +1298,13 @@ new Chart(fanCtx, {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: '#04342C', borderColor: teal700, borderWidth: 0.5,
+        backgroundColor: '#0d1b2e', borderColor: teal700, borderWidth: 0.5,
         titleColor: teal300, bodyColor: teal50
       }
     },
     scales: {
-      x: { grid: { color: 'rgba(15,110,86,.3)' }, ticks: { color: teal700, font: { size: 8 } } },
-      y: { grid: { color: 'rgba(15,110,86,.3)' }, ticks: { color: teal700, font: { size: 8 } }, min: 93, max: 106 }
+      x: { grid: { color: 'rgba(30,64,112,.3)' }, ticks: { color: teal700, font: { size: 8 } } },
+      y: { grid: { color: 'rgba(30,64,112,.3)' }, ticks: { color: teal700, font: { size: 8 } }, min: 93, max: 106 }
     }
   }
 });
